@@ -49,9 +49,9 @@ var construct_dot = function(x, y, r, c){
 	if (e.target.tagName === "svg"){
 	    dot = construct_dot(e.offsetX, e.offsetY, 20, "red");
 	    dot.display();
-	    dot.displayer.addEventListener("click", function() {dot.change_color("blue"); dot.remove(); dot.display();}, true);
+	    dot.displayer.addEventListener("click", function() {dot.change_color("blue"); dot.remove(); dot.display(); dot.displayer.addEventListener("click", function() {dot.remove(); add_dot_random();}, true);}, true);
 	    // uncomment this: why isnt it working?
-	    //      	    dot.displayer.addEventListener("click", function() {dot.remove(); add_dot_random();}, true);
+
 	}
 	else {
 	    console.log(e.target);
