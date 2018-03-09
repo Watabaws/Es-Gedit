@@ -5,7 +5,7 @@ var beep = document.getElementById("beep");
 
 
 //var foo = new Object()l
-// foo.name= "bar" 
+// foo.name= "bar"
 // etc
 
 //or
@@ -27,8 +27,9 @@ var construct_dot = function(x, y, r, c){
     dot.display = function(){
 	console.log("DOTS COLOR IS: ");
 	console.log(dot.col);
-	dot.displayer = create_dot(dot),
-	pic.append(dot.displayer);
+	dot.displayer = create_dot(dot);
+  console.log(dot.displayer);
+	pic.appendChild(dot.displayer);
 
 	}
     dot.remove = function() {pic.removeChild(dot.displayer);};
@@ -39,14 +40,14 @@ var construct_dot = function(x, y, r, c){
     dot.gety= function() {return dot.ycor;};
     dot.get_radius= function() {return dot.radius;};
     dot.get_color= function() {return dot.col;};
-    
+
     return dot;
 }
 
 
     var add_dot = function(e){
 	if (e.target.tagName === "svg"){
-	    dot = construct_dot(e.offsetX, e.offsetY, 20, "red");   
+	    dot = construct_dot(e.offsetX, e.offsetY, 20, "red");
 	    dot.display();
 	    dot.displayer.addEventListener("click", function() {dot.change_color("blue"); dot.remove(); dot.display();}, true);
 	    // uncomment this: why isnt it working?
@@ -56,7 +57,7 @@ var construct_dot = function(x, y, r, c){
 	    console.log(e.target);
   }
     }
-    
+
 
 
     var remove = function(item){
@@ -80,8 +81,8 @@ var create_dot = function(dot){
 }
 
 
-    
- 
+
+
 
 
 beep.addEventListener("click", function() {
@@ -95,9 +96,3 @@ var clear = function(){
 	    fc = pic.firstChild;
 	}
 }
-    
-
-
-	
-	
-	
