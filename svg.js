@@ -21,16 +21,15 @@ pic.addEventListener("click", function(e){add_dot(e);}, true);
 
 // creates an object dot, with necessary accessor and mutator methods
 var construct_dot = function(x, y, r, c){
-    console.log(c);
-    var dot = { xcor:x , ycor : y, radius : r, col: c};
-    dot.displayer = create_dot(dot),
-    dot.display = function(){
-	console.log("DOTS COLOR IS: ");
-	console.log(dot.col);
-	dot.displayer = create_dot(dot);
-  console.log(dot.displayer);
-	pic.appendChild(dot.displayer);
-
+      console.log(c);
+      var dot = { xcor:x , ycor : y, radius : r, col: c};
+      dot.displayer = create_dot(dot),
+      dot.display = function(){
+    	console.log("DOTS COLOR IS: ");
+    	console.log(dot.col);
+    	dot.displayer = create_dot(dot);
+      console.log(dot.displayer);
+    	pic.appendChild(dot.displayer);
 	}
     dot.remove = function() {pic.removeChild(dot.displayer);};
     dot.changex= function(new_x) { xcor = dot.new_x;};
@@ -68,7 +67,9 @@ var construct_dot = function(x, y, r, c){
     var add_dot_random = function() {
     dot = construct_dot(Math.random() * 600, Math.random() * 600, 20, "red");
     console.log("dot is to change color when clicked");
-    dot.displayer.addEventListener("click", function() {dot.change_color("blue"); dot.display();}, true);
+    dot.displayer.addEventListener("click", function() {dot.change_color("blue"); dot.remove(); dot.display(); dot.displayer.addEventListener("click", function() {dot.remove(); add_dot_random();}, true);}, true);
+    dot.display();
+
     }
 
 var create_dot = function(dot){
